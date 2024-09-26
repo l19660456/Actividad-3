@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <style>
+        .error {
+            color: pink;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Formulario de Registro</h2>
+    <form id="registroForm" onsubmit="return validarFormulario()">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <span id="errorNombre" class="error">El campo nombre no puede estar vacío</span>
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        function validarFormulario() {
+            var nombre = document.getElementById("nombre").value;
+            var errorNombre = document.getElementById("errorNombre");
+            var noname = false;
+
+            if (nombre === "") {
+                errorNombre.style.display = "inline";
+                noname = true; // Asignar true si el nombre está vacío
+                return false; // Evitar que el formulario se envíe
+            } else {
+                errorNombre.style.display = "none";
+                noname = false; // Asignar false si el nombre está presente
+            }
+            return true; // Permitir que el formulario se envíe si todo está bien
+        }
+    </script>
+
+</body>
+</html>
